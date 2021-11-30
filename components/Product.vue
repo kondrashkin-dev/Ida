@@ -1,15 +1,28 @@
 <template>
-  <article class="product">
-    <img src="~assets/images/Polaroid.jpg" alt="Polaroid" />
-    <h2 class="product__title">Наименование товара</h2>
+  <section class="product">
+    <img
+      class="product__image"
+      src="~assets/images/Polaroid.jpg"
+      alt="Polaroid"
+    />
+    <h2 class="product__title">{{ title }}</h2>
     <p class="product__text">
       Довольно-таки интересное описание товара в несколько строк. Довольно-таки
       интересное описание товара в несколько строк
     </p>
     <div class="product__price">10 000 руб.</div>
-  </article>
+  </section>
 </template>
-
+<script>
+export default {
+  props: {
+    title: {
+      type: String,
+      required: true,
+    },
+  },
+}
+</script>
 <style lang="scss" scoped>
 .product {
   padding: 1rem;
@@ -17,6 +30,10 @@
   border-radius: rem(4);
   box-shadow: 0 rem(20) rem(30) rgba(0, 0, 0, 0.04),
     0 rem(6) rem(10) rgba(0, 0, 0, 0.02);
+}
+.product__image {
+  width: 100%;
+  object-fit: cover;
 }
 .product__title {
   color: #3f3f3f;
