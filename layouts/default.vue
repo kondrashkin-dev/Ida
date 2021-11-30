@@ -1,5 +1,8 @@
 <template>
-  <main class="app">
-    <Nuxt />
-  </main>
+  <div class="wrapper">
+    <div class="container">
+      <Header />
+      <Nuxt />
+    </div>
+  </div>
 </template>
