@@ -1,35 +1,31 @@
 <template>
   <section class="product">
-    <img
-      class="product__image"
-      src="~assets/images/Polaroid.jpg"
-      alt="Polaroid"
-    />
-    <h2 class="product__title">{{ title }}</h2>
+    <img class="product__image" :src="product.image" alt="Polaroid" />
+    <h2 class="product__title">{{ product.title }}</h2>
     <p class="product__text">
-      Довольно-таки интересное описание товара в несколько строк. Довольно-таки
-      интересное описание товара в несколько строк
+      {{ product.description }}
     </p>
-    <div class="product__price">10 000 руб.</div>
+    <div class="product__price">{{ product.price }}</div>
   </section>
 </template>
+
 <script>
 export default {
   props: {
-    title: {
-      type: String,
+    product: {
+      type: Object,
       required: true,
     },
   },
 }
 </script>
+
 <style lang="scss" scoped>
 .product {
   padding: 1rem;
   background: #fffefb;
-  border-radius: rem(4);
-  box-shadow: 0 rem(20) rem(30) rgba(0, 0, 0, 0.04),
-    0 rem(6) rem(10) rgba(0, 0, 0, 0.02);
+  border-radius: 4px;
+  box-shadow: 0 20px r30px rgba(0, 0, 0, 0.04), 0 6px 10px rgba(0, 0, 0, 0.02);
 }
 .product__image {
   width: 100%;
