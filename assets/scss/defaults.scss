@@ -10,7 +10,7 @@
 
 .wrapper {
   min-height: 100vh;
-  background: #000;
+  background-color: #e5e5e5;
 }
 
 .btn {
@@ -26,5 +26,8 @@
   max-width: 1376px;
   margin-right: auto;
   margin-left: auto;
-  padding: 2rem;
+  padding: 1rem;
+  @media (min-width: em(576)) {
+    padding: 2rem;
+  }
 }
