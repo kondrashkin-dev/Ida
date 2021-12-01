@@ -35,7 +35,7 @@ export default {
   data() {
     return {
       product: {
-        id: uniqueId(),
+        id: uniqueId('id'),
       },
     }
   },
