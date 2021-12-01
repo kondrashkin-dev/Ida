@@ -1,6 +1,6 @@
 <template>
   <article class="products">
-    <Product v-for="item in products" :key="item.id" :title="item.title" />
+    <Product v-for="item in products" :key="item.id" :product="item" />
   </article>
 </template>
 
@@ -18,7 +18,7 @@ export default {
 .products {
   display: grid;
   flex: 1 1 auto;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(278px, 1fr));
   gap: 1rem;
 }
 </style>
