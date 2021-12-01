@@ -10,6 +10,9 @@ export default {}
 </script>
 <style lang="scss" scoped>
 .home {
-  display: flex;
+  @media (min-width: em(768)) {
+    display: flex;
+    align-items: flex-start;
+  }
 }
 </style>

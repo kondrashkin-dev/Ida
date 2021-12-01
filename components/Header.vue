@@ -19,8 +19,14 @@
 .header__title {
   color: #3f3f3f;
   font-weight: 600;
-  font-size: rem(28);
+  font-size: rem(18);
   line-height: em(35);
+  @media (min-width: em(576)) {
+    font-size: rem(20);
+  }
+  @media (min-width: em(768)) {
+    font-size: rem(28);
+  }
 }
 .header__btn {
   padding: em(11) 1em;
