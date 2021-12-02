@@ -22,7 +22,11 @@
         label="Цена товара"
         placeholder="Введите цену"
       />
-      <button class="add-product__form-submit" type="submit">
+      <button
+        class="add-product__form-submit"
+        :disabled="!isValid"
+        type="submit"
+      >
         Добавить товар
       </button>
     </form>
@@ -30,14 +34,23 @@
 </template>
 
 <script>
-const uniqueId = require('lodash.uniqueid')
+import uniqueId from 'lodash.uniqueid'
 export default {
   data() {
     return {
       product: {
         id: uniqueId('id'),
+        title: '',
+        description: '',
+        image: '',
+        price: '',
       },
     }
+  },
+  computed: {
+    isValid() {
+      return this.product.title && this.product.image && this.product.price
+    },
   },
   methods: {
     addProduct() {
@@ -82,6 +95,11 @@ export default {
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   cursor: pointer;
+  &:disabled {
+    color: #b4b4b4;
+    background-color: #eee;
+    cursor: auto;
+  }
   @media (min-width: em(768)) {
     font-size: rem(12);
   }
