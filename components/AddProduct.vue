@@ -2,24 +2,24 @@
   <div class="add-product">
     <form class="add-product__form" @submit.prevent="addProduct">
       <TextField
-        v-model="product.title"
+        v-model="title"
         label="Наименование товара"
         placeholder="Введите наименование товара"
       />
       <TextField
-        v-model="product.description"
+        v-model="description"
         label="Описание товара"
         placeholder="Введите описание товара"
         textarea
         :required="false"
       />
       <TextField
-        v-model="product.image"
+        v-model="image"
         label="Ссылка на изображение товара"
         placeholder="Введите ссылку"
       />
       <TextField
-        v-model="product.price"
+        v-model="price"
         v-price-mask
         label="Цена товара"
         placeholder="Введите цену"
@@ -40,23 +40,28 @@ import uniqueId from 'lodash.uniqueid'
 export default {
   data() {
     return {
-      product: {
-        id: uniqueId('id'),
-        title: '',
-        description: '',
-        image: '',
-        price: '',
-      },
+      title: '',
+      description: '',
+      image: '',
+      price: '',
     }
   },
   computed: {
     isValid() {
-      return this.product.title && this.product.image && this.product.price
+      return this.title && this.image && this.price
     },
   },
   methods: {
     addProduct() {
-      this.$store.commit('products/add', this.product)
+      const product = {
+        id: uniqueId('0'),
+        image: this.image,
+        title: this.title,
+        description: this.description,
+        price: this.price,
+      }
+      this.$store.commit('products/add', product)
+      this.image = this.title = this.description = this.price = ''
     },
   },
 }

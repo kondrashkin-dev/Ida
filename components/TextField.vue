@@ -60,7 +60,7 @@ export default {
     color: #49485e;
     font-size: rem(16);
     line-height: em(13);
-    
+
     @media (min-width: em(768)) {
       margin-bottom: rem(4);
       font-size: rem(10);
