@@ -18,13 +18,13 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: ['@/assets/scss/defaults.scss'],
+  css: ['@assets/scss/defaults.scss'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: [{ src: '@plugins/mask.js', ssr: false }],
 
   styleResources: {
-    scss: ['~/assets/scss/mixins.scss'],
+    scss: ['@assets/scss/mixins.scss'],
   },
 
   // Auto import components: https://go.nuxtjs.dev/config-components
