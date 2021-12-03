@@ -1,6 +1,6 @@
 <template>
   <section class="product">
-    <img class="product__image" :src="product.image" alt="Polaroid" />
+    <img class="product__image" :src="product.image" :alt="product.title" />
     <h2 class="product__title">{{ product.title }}</h2>
     <p class="product__text">
       {{ product.description }}
