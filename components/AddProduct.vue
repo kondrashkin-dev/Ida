@@ -11,6 +11,7 @@
         label="Описание товара"
         placeholder="Введите описание товара"
         textarea
+        :required="false"
       />
       <TextField
         v-model="product.image"
@@ -19,6 +20,7 @@
       />
       <TextField
         v-model="product.price"
+        v-price-mask
         label="Цена товара"
         placeholder="Введите цену"
       />
