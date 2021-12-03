@@ -1,5 +1,5 @@
 <template>
-  <label class="text-field">
+  <label class="text-field" :class="{ required: required }">
     <span class="text-field__text">{{ label }}</span>
     <textarea
       v-if="textarea"
@@ -36,12 +36,18 @@ export default {
     textarea: {
       type: Boolean,
     },
+    required: {
+      type: Boolean,
+      default: true,
+    },
   },
 }
 </script>
 
 <style lang="scss" scoped>
 .text-field {
+  $self: &;
+
   display: flex;
   flex-direction: column;
   &:not(:last-child) {
@@ -54,12 +60,14 @@ export default {
     color: #49485e;
     font-size: rem(16);
     line-height: em(13);
+
     @media (min-width: em(768)) {
       margin-bottom: rem(4);
       font-size: rem(10);
       letter-spacing: -0.02em;
     }
-    &::after {
+
+    #{$self}.required &::after {
       position: absolute;
       top: 0;
       right: 0;

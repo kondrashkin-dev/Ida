@@ -2,27 +2,33 @@
   <div class="add-product">
     <form class="add-product__form" @submit.prevent="addProduct">
       <TextField
-        v-model="product.title"
+        v-model="title"
         label="Наименование товара"
         placeholder="Введите наименование товара"
       />
       <TextField
-        v-model="product.description"
+        v-model="description"
         label="Описание товара"
         placeholder="Введите описание товара"
         textarea
+        :required="false"
       />
       <TextField
-        v-model="product.image"
+        v-model="image"
         label="Ссылка на изображение товара"
         placeholder="Введите ссылку"
       />
       <TextField
-        v-model="product.price"
+        v-model="price"
+        v-price-mask
         label="Цена товара"
         placeholder="Введите цену"
       />
-      <button class="add-product__form-submit" type="submit">
+      <button
+        class="add-product__form-submit"
+        :disabled="!isValid"
+        type="submit"
+      >
         Добавить товар
       </button>
     </form>
@@ -30,18 +36,32 @@
 </template>
 
 <script>
-const uniqueId = require('lodash.uniqueid')
+import uniqueId from 'lodash.uniqueid'
 export default {
   data() {
     return {
-      product: {
-        id: uniqueId('id'),
-      },
+      title: '',
+      description: '',
+      image: '',
+      price: '',
     }
+  },
+  computed: {
+    isValid() {
+      return this.title && this.image && this.price
+    },
   },
   methods: {
     addProduct() {
-      this.$store.commit('products/add', this.product)
+      const product = {
+        id: uniqueId('0'),
+        image: this.image,
+        title: this.title,
+        description: this.description,
+        price: this.price,
+      }
+      this.$store.commit('products/add', product)
+      this.image = this.title = this.description = this.price = ''
     },
   },
 }
@@ -82,6 +102,11 @@ export default {
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   cursor: pointer;
+  &:disabled {
+    color: #b4b4b4;
+    background-color: #eee;
+    cursor: auto;
+  }
   @media (min-width: em(768)) {
     font-size: rem(12);
   }
