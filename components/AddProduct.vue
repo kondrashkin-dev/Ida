@@ -26,10 +26,11 @@
       />
       <button
         class="add-product__form-submit"
-        :disabled="!isValid"
+        :class="{ 'add-product__form-submit_success': isAddSuccess }"
+        :disabled="!isValid || isAddSuccess"
         type="submit"
       >
-        Добавить товар
+        {{ isAddSuccess ? 'Товар успешно добавлен' : 'Добавить товар' }}
       </button>
     </form>
   </div>
@@ -37,6 +38,7 @@
 
 <script>
 import uniqueId from 'lodash.uniqueid'
+import sleep from '../utils/sleep'
 export default {
   data() {
     return {
@@ -44,6 +46,7 @@ export default {
       description: '',
       image: '',
       price: '',
+      isAddSuccess: false,
     }
   },
   computed: {
@@ -61,6 +64,13 @@ export default {
         price: this.price,
       }
       this.$store.commit('products/add', product)
+      this.AddSuccess()
+    },
+    async AddSuccess() {
+      this.isAddSuccess = true
+      await sleep(1000)
+      this.isAddSuccess = false
+      //  Очистка полей формы
       this.image = this.title = this.description = this.price = ''
     },
   },
@@ -85,6 +95,7 @@ export default {
     }
   }
 }
+
 .add-product__form {
   display: flex;
   flex-direction: column;
@@ -102,11 +113,20 @@ export default {
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   cursor: pointer;
+
   &:disabled {
     color: #b4b4b4;
     background-color: #eee;
     cursor: auto;
   }
+  //  Обязательно дожен быть ниже обычного disabled, чтобы переписывать стили
+  &_success {
+    &:disabled {
+      color: #fff;
+      background-color: #28a745;
+    }
+  }
+
   @media (min-width: em(768)) {
     font-size: rem(12);
   }

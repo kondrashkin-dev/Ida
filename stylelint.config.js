@@ -5,4 +5,8 @@ module.exports = {
     'stylelint-config-rational-order',
   ],
   plugins: ['stylelint-order', 'stylelint-scss'],
+  rules: {
+    // рекомендуемые правила
+    'at-rule-no-unknown': null,
+  },
 }
