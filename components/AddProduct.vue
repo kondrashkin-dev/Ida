@@ -79,7 +79,7 @@ export default {
 
 <style lang="scss" scoped>
 .add-product {
-  flex: 1 0 332px;
+  flex: 0 1 332px;
   padding: rem(24);
   background: #fffefb;
   border-radius: 4px;

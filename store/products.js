@@ -33,6 +33,12 @@ export const mutations = {
   add(state, product) {
     state.products.push(product)
   },
+  delete({ products }, id) {
+    products.splice(
+      products.find((product) => product.id === id),
+      1
+    )
+  },
 }
 
 export const getters = {
