@@ -84,6 +84,9 @@ export default {
   background: #fffefb;
   border-radius: 4px;
   box-shadow: 0 20px 30px rgba(0, 0, 0, 0.04), 0 6px 10px rgba(0, 0, 0, 0.02);
+  &:hover {
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2), 0 6px 10px rgba(0, 0, 0, 0.02);
+  }
   @media (min-width: em(768)) {
     &:not(:last-child) {
       margin-right: 1rem;
