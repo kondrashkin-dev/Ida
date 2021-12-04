@@ -6,7 +6,7 @@ export default {
   head: {
     title: 'Ida',
     htmlAttrs: {
-      lang: 'en',
+      lang: 'ru',
     },
     meta: [
       { charset: 'utf-8' },
@@ -21,7 +21,10 @@ export default {
   css: ['@assets/scss/defaults.scss'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [{ src: '@plugins/mask.js', ssr: false }],
+  plugins: [
+    { src: '@plugins/mask.js', ssr: false },
+    { src: '@plugins/persistedState.client.js' },
+  ],
 
   styleResources: {
     scss: ['@assets/scss/mixins.scss'],
@@ -37,7 +40,6 @@ export default {
     // https://go.nuxtjs.dev/stylelint
     '@nuxtjs/stylelint-module',
   ],
-
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: ['@nuxtjs/style-resources'],
 

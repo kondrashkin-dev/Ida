@@ -3,7 +3,7 @@ const image = require('../assets/images/Polaroid.jpg')
 export const state = () => ({
   products: [
     {
-      id: 1,
+      id: '1',
       image,
       title: 'Наименование товара',
       description:
@@ -11,7 +11,7 @@ export const state = () => ({
       price: '10 000 руб.',
     },
     {
-      id: 2,
+      id: '2',
       image,
       title: 'Наименование товара',
       description:
@@ -19,7 +19,7 @@ export const state = () => ({
       price: '10 000 руб.',
     },
     {
-      id: 3,
+      id: '3',
       image,
       title: 'Наименование товара',
       description:
@@ -34,10 +34,8 @@ export const mutations = {
     state.products.push(product)
   },
   delete({ products }, id) {
-    products.splice(
-      products.find((product) => product.id === id),
-      1
-    )
+    const index = products.findIndex((product) => product.id === id)
+    products.splice(index, 1)
   },
 }
 
