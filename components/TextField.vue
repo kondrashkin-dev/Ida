@@ -56,14 +56,14 @@ export default {
   &__text {
     position: relative;
     align-self: start;
-    margin-bottom: rem(12);
+    margin-bottom: em(12);
     color: #49485e;
     font-size: rem(16);
     line-height: em(13);
 
     @media (min-width: em(768)) {
-      margin-bottom: rem(4);
-      font-size: rem(10);
+      margin-bottom: em(10);
+      font-size: rem(16);
       letter-spacing: -0.02em;
     }
 
@@ -89,6 +89,13 @@ export default {
     border: none;
     border-radius: 4px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    &:focus {
+      outline: 1px solid #b4b4b4;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+    &:hover {
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
     &-textarea {
       min-height: 125px;
       resize: none;
