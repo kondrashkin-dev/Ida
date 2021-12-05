@@ -1,7 +1,8 @@
 <template>
-  <article class="products">
+  <article v-if="products.length" class="products">
     <Product v-for="item in products" :key="item.id" :product="item" />
   </article>
+  <article v-else class="products products_empty">Продуктов нет</article>
 </template>
 
 <script>
@@ -14,11 +15,17 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scope>
 .products {
   display: grid;
-  flex: 1 1 auto;
+  flex: 1 0 auto;
   grid-template-columns: repeat(auto-fit, minmax(278px, 1fr));
   gap: 1rem;
+  &_empty {
+    display: flex;
+    align-items: center;
+    align-self: stretch;
+    justify-content: center;
+  }
 }
 </style>
