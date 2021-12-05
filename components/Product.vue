@@ -1,5 +1,5 @@
 <template>
-  <section class="product">
+  <section class="product" :class="{ deleting: isDeleting }">
     <img class="product__image" :src="product.image" :alt="product.title" />
     <div class="product__body">
       <button class="product__delete" type="button" @click="deleteProduct" />
@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import sleep from '~/utils/sleep'
 export default {
   props: {
     product: {
@@ -20,8 +21,16 @@ export default {
       required: true,
     },
   },
+  data() {
+    return {
+      isDeleting: false,
+    }
+  },
   methods: {
-    deleteProduct() {
+    async deleteProduct() {
+      this.isDeleting = true
+      await sleep(300)
+      this.isDeleting = false
       this.$store.commit('products/delete', this.product.id)
     },
   },
@@ -64,6 +73,10 @@ export default {
       visibility: visible;
       opacity: 1;
     }
+  }
+  &.deleting {
+    transform: translateX(-100%);
+    opacity: 0;
   }
 }
 .product__body {
