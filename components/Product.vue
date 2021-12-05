@@ -49,10 +49,13 @@ export default {
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transform: translate(25%, -25%);
-    visibility: hidden;
     cursor: pointer;
-    opacity: 0;
     transition: all 0.3s ease-in;
+
+    @media (hover: hover) {
+      visibility: hidden;
+      opacity: 0;
+    }
   }
   &:hover {
     box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2), 0 6px 10px rgba(0, 0, 0, 0.02);
