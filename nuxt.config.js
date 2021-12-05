@@ -26,6 +26,11 @@ export default {
     { src: '@plugins/persistedState.client.js' },
   ],
 
+  loading: {
+    color: 'blue',
+    height: '5px',
+  },
+
   styleResources: {
     scss: ['@assets/scss/mixins.scss'],
   },
