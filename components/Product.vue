@@ -46,6 +46,7 @@ export default {
   border-radius: 4px;
   box-shadow: 0 20px 30px rgba(0, 0, 0, 0.04), 0 6px 10px rgba(0, 0, 0, 0.02);
   transition: all 0.3s ease-in;
+  animation: adding 0.3s ease-in;
   &__delete {
     position: absolute;
     top: 0;
@@ -78,6 +79,16 @@ export default {
     transform: translateX(-100%);
     opacity: 0;
   }
+  @keyframes adding {
+    from {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
 }
 .product__body {
   padding: 1rem;
@@ -85,6 +96,8 @@ export default {
 .product__image {
   width: 100%;
   object-fit: cover;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
 }
 .product__title {
   color: #3f3f3f;
