@@ -112,7 +112,6 @@ export default {
   font-family: 'Inter', sans-serif;
   line-height: em(15);
   background: #7bae73;
-  border: none;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   cursor: pointer;
@@ -122,7 +121,7 @@ export default {
     background-color: #eee;
     cursor: auto;
   }
-  //  Обязательно дожен быть ниже обычного disabled, чтобы переписывать стили
+  //  Обязательно дожен быть ниже обычного disabled, чтобы его переписывать
   &_success {
     &:disabled {
       color: #fff;

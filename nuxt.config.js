@@ -32,7 +32,7 @@ export default {
   },
 
   styleResources: {
-    scss: ['@assets/scss/mixins.scss'],
+    scss: ['@assets/scss/functions.scss'],
   },
 
   // Auto import components: https://go.nuxtjs.dev/config-components
