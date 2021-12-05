@@ -1,5 +1,5 @@
 <template>
-  <section class="product">
+  <section class="product" :class="{ deleting: isDeleting }">
     <img class="product__image" :src="product.image" :alt="product.title" />
     <div class="product__body">
       <button class="product__delete" type="button" @click="deleteProduct" />
@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import sleep from '~/utils/sleep'
 export default {
   props: {
     product: {
@@ -20,8 +21,16 @@ export default {
       required: true,
     },
   },
+  data() {
+    return {
+      isDeleting: false,
+    }
+  },
   methods: {
-    deleteProduct() {
+    async deleteProduct() {
+      this.isDeleting = true
+      await sleep(300)
+      this.isDeleting = false
       this.$store.commit('products/delete', this.product.id)
     },
   },
@@ -37,6 +46,7 @@ export default {
   border-radius: 4px;
   box-shadow: 0 20px 30px rgba(0, 0, 0, 0.04), 0 6px 10px rgba(0, 0, 0, 0.02);
   transition: all 0.3s ease-in;
+  animation: adding 0.3s ease-in;
   &__delete {
     position: absolute;
     top: 0;
@@ -65,6 +75,20 @@ export default {
       opacity: 1;
     }
   }
+  &.deleting {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  @keyframes adding {
+    from {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
 }
 .product__body {
   padding: 1rem;
@@ -72,6 +96,8 @@ export default {
 .product__image {
   width: 100%;
   object-fit: cover;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
 }
 .product__title {
   color: #3f3f3f;
